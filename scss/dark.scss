@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+$body-background: #FFFFFF;
+$keyboard-background: #0B0A0A;
+$controller-background: #F0F0F0;
+$button: #0B0A0A;
+$button-shadow-1: rgba(0, 0, 0, 0.6);
+$button-shadow-2: rgba(51, 51, 56, 0.2);
+$result-color: black;
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+
+    .dark {
+        .result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .controller {
+                margin-top: 20px;
+                background-color: $controller-background;
+                width: 120px;
+                height: 38px;
+                border-radius: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                column-gap: 29px;
+
+                &__item {
+                    transition: 0.5s all;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.10);
+                    }
+
+                    &:active {
+                        transform: scale(1.10);
+                    }
+                }
+            }
+
+            
+
+                @mixin setFont($size) {
+                    font-family: Oswald;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: $size;
+                }
+
+                &__sample {
+                    margin-top: 80px;
+                    align-self: flex-end;
+                    margin-right: 15px;
+                    @include setFont(36px);
+                    color: rgba(114, 138, 183, 0.65);
+                }
+    
+                &__result {  
+                    align-self: flex-end;   
+                    margin-top: -10px; 
+                    margin-right: 15px;           
+                    @include setFont(64px);
+                    color: $result-color;
+                }
+        }
+        .keyboard {
+            margin-top: 35px;
+            background-color: $keyboard-background;
+            border-radius: 12px 12px 0px 0px;
+            display: flex;
+            flex-direction: column;
+
+            .dec {
+                margin: 25px auto;
+            }
+
+            .buttons {
+                margin: 0 35px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                column-gap: 19px;
+                row-gap: 19px;
+                padding-bottom: 15px;
+
+                @mixin setDefaultButton($color, $width, $background-color, $position, $padding-left) {
+                    display: flex;
+                    align-items: center;
+                    padding-left: $padding-left;
+                    justify-content: $position;
+                    color: $color;
+                    width: $width;
+                    height: 70px;
+                    background: $background-color;
+                    box-shadow: -10px -10px 24px $button-shadow-1, 10px 10px 24px $button-shadow-2;
+                    border-radius: 16px;
+                    font-family: Oswald;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 36px;
+                    cursor: pointer;
+                    transition: 0.5s;
+
+                    &:hover {
+                        background: lighten($background-color, 5%)
+                    }
+
+                    &:active {
+                        background: lighten($background-color, 5%)
+                    }
+                }
+
+                .button__c {
+                    @include setDefaultButton(#FF7171, 70px, $button, center, 0);
+                }
+
+                .button__plmin {
+                    @include setDefaultButton(#FF7171, 70px, $button, center, 0);
+                }
+
+                .button__percent {
+                    @include setDefaultButton(#00FF57, 70px, $button, center, 0);
+                }
+
+                .button__act {
+                    @include setDefaultButton(#745FF2, 70px, $button, center, 0);
+                }
+
+                .button__number {
+                    @include setDefaultButton(#728AB7, 70px, $button, center, 0);
+                }
+
+                .button__null {
+                    @include setDefaultButton(#728AB7, 139px, $button, start, 20px);
+                }
+
+                .button__result {
+                    @include setDefaultButton(white, 70px, #2DD3C5, center, 0);
+                }
+            }
+        }
+    }
+}
